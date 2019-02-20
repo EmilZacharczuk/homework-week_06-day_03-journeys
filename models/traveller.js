@@ -50,10 +50,13 @@ Traveller.prototype.calculateTotalDistanceTravelled = function () {
 
 Traveller.prototype.getUniqueModesOfTransport = function () {
   let journeysArray = this.journeys.map(journey => journey.transport)
-  return journeysArray;
-  journeysArray.forEach((journey, index) => {
-    
-  })
+  let myOrderedArray = journeysArray.reduce(function (accumulator, currentValue) {
+  if (accumulator.indexOf(currentValue) === -1) {
+    accumulator.push(currentValue);
+  }
+  return accumulator
+  }, [])
+  return myOrderedArray;
 };
 
 
